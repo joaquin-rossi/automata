@@ -1,12 +1,16 @@
 #ifndef LOGIC_H_
 #define LOGIC_H_
 
-#define N 200
+#define N 50
 #define SCREEN_WIDTH 800.0
 #define SCREEN_HEIGHT 800.0
 #define CELL_WIDTH (SCREEN_WIDTH / N)
 #define CELL_HEIGHT (SCREEN_HEIGHT / N)
-#define MOVESPERFRAME 50
+#define MOVESPERFRAME 1
+
+enum AUTOMATUM {
+    LANGTON
+};
 
 enum CELL {
     WHITE,
@@ -34,8 +38,8 @@ typedef struct {
 
 typedef struct {
     int board[N][N];
-    position ant;
     int mode;
+    position ant;
 } state_t;
 
 #endif // LOGIC_H_

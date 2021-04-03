@@ -3,6 +3,6 @@
 
 #include "logic.h"
 
-void render(SDL_Renderer *renderer, const state_t *state);
+void langton(SDL_Renderer *renderer, state_t *state);
 
 #endif // RENDERING_H_

@@ -12,5 +12,9 @@ Implementation of different celullar automata with SDL2 in C. Developed and test
 * `make`
 * `./bin/main`
 
+## Extra info
+* Click the window to toggle between running and paused.
+* Edit src/logic.h (pre-processor #defines) to change speed, size, etc.
+
 ## Demo
 ![](demo.gif)

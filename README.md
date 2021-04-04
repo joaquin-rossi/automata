@@ -13,8 +13,9 @@ Implementation of different celullar automata with SDL2 in C. Developed and test
 * `./bin/main`
 
 ## Extra info
-* Click the window to toggle between running and paused.
+* Click a cell to change its value.
+* Press the spacebar to toggle between paused and unpaused.
 * Edit src/logic.h (pre-processor #defines) to change speed, size, etc.
 
 ## Demo
-![](demo.gif)
+![Langton's ant](demo.gif)

@@ -1,20 +1,21 @@
 #ifndef LOGIC_H_
 #define LOGIC_H_
 
-#define N 50
+#define N 100
 #define SCREEN_WIDTH 800.0
 #define SCREEN_HEIGHT 800.0
 #define CELL_WIDTH (SCREEN_WIDTH / N)
 #define CELL_HEIGHT (SCREEN_HEIGHT / N)
-#define MOVESPERFRAME 1
+#define MOVES_PER_FRAME 1
 
-enum AUTOMATUM {
-    LANGTON
+enum AUTOMATA {
+    LANGTONS_ANT,
+    GAME_OF_LIFE
 };
 
 enum CELL {
-    WHITE,
-    BLACK
+    BLACK,
+    WHITE
 };
 
 enum ORIENTATION {

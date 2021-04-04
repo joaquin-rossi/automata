@@ -7,16 +7,18 @@
 #define CELL_WIDTH (SCREEN_WIDTH / N)
 #define CELL_HEIGHT (SCREEN_HEIGHT / N)
 #define MOVES_PER_FRAME 1
-#define MOVES_PER_SECOND 2
+#define MOVES_PER_SECOND 10
 
 enum AUTOMATA {
     LANGTONS_ANT,
-    GAME_OF_LIFE
+    GAME_OF_LIFE,
+    BRIANS_BRAIN,
 };
 
 enum CELL {
     BLACK,
-    WHITE
+    WHITE,
+    BLUE,
 };
 
 enum ORIENTATION {

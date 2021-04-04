@@ -11,24 +11,30 @@ int mod(int a, int b)
 
 const SDL_Color BLACK_CELL_COLOR = { .r = 0, .g = 0, .b = 0 };
 const SDL_Color WHITE_CELL_COLOR = { .r = 255, .g = 255, .b = 255 };
+const SDL_Color BLUE_CELL_COLOR = { .r = 0, .g = 0, .b = 255 };
+
 const SDL_Color ANT_COLOR = { .r = 255, .g = 50, .b = 50 };
 
 void render_grid(SDL_Renderer *renderer, const state_t *state)
 {
     for (int x = 0; x < N; x++)
         for (int y = 0; y < N; y++) {
+            SDL_Rect rect = {
+                .x = x * CELL_WIDTH,
+                .y = y * CELL_HEIGHT,
+                .w = CELL_WIDTH,
+                .h = CELL_HEIGHT
+            };
+
             switch(state->board[x][y]) {
                 case BLACK:
                     SDL_SetRenderDrawColor(renderer, BLACK_CELL_COLOR.r, BLACK_CELL_COLOR.g, BLACK_CELL_COLOR.b, 255);
-                    SDL_Rect rect = {
-                        .x = x * CELL_WIDTH,
-                        .y = y * CELL_HEIGHT,
-                        .w = CELL_WIDTH,
-                        .h = CELL_HEIGHT
-                    };
-
                     SDL_RenderFillRect(renderer, &rect);
+                    break;
 
+                case BLUE:
+                    SDL_SetRenderDrawColor(renderer, BLUE_CELL_COLOR.r, BLUE_CELL_COLOR.g, BLUE_CELL_COLOR.b, 255);
+                    SDL_RenderFillRect(renderer, &rect);
                     break;
                 
                 default: {}
@@ -106,6 +112,38 @@ void game_of_life(SDL_Renderer *renderer, state_t *state)
                     new_board[x][y] = WHITE;
                 else if (state->board[x][y] == BLACK && n_neigh == 3)
                     new_board[x][y] = WHITE;
+                else
+                    new_board[x][y] = BLACK;
+            }
+
+        for (int x = 0; x < N; x++)
+            for (int y = 0; y < N; y++)
+                state->board[x][y] = new_board[x][y];
+    }
+}
+
+void brians_brain(SDL_Renderer *renderer, state_t *state)
+{
+    for (int i = 0; i < MOVES_PER_FRAME; i++)
+    if (state->mode == RUNNING_MODE) {
+        int new_board[N][N];
+
+        for (int x = 0; x < N; x++)
+            for (int y = 0; y < N; y++) {
+                int n_neigh =
+                    (state->board[mod((x - 1), N)][mod((y - 1), N)] == WHITE) +
+                    (state->board[mod((x    ), N)][mod((y - 1), N)] == WHITE) +
+                    (state->board[mod((x + 1), N)][mod((y - 1), N)] == WHITE) +
+                    (state->board[mod((x - 1), N)][mod((y    ), N)] == WHITE) +
+                    (state->board[mod((x + 1), N)][mod((y    ), N)] == WHITE) +
+                    (state->board[mod((x - 1), N)][mod((y + 1), N)] == WHITE) +
+                    (state->board[mod((x    ), N)][mod((y + 1), N)] == WHITE) +
+                    (state->board[mod((x + 1), N)][mod((y + 1), N)] == WHITE);
+
+                if (state->board[x][y] == BLACK && n_neigh == 2)
+                    new_board[x][y] = WHITE;
+                else if (state->board[x][y] == WHITE)
+                    new_board[x][y] = BLUE;
                 else
                     new_board[x][y] = BLACK;
             }

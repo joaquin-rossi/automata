@@ -1,7 +1,7 @@
 #ifndef LOGIC_H_
 #define LOGIC_H_
 
-#define N 100
+#define N 50
 #define SCREEN_WIDTH 800.0
 #define SCREEN_HEIGHT 800.0
 #define CELL_WIDTH (SCREEN_WIDTH / N)

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include <SDL2/SDL.h>
 
@@ -113,6 +114,11 @@ int main(int argc, char **argv)
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
+
+        render_grid(renderer, &state);
+
+        if (state.mode == RUNNING_MODE)
+            usleep((1.0 / MOVES_PER_SECOND) * 1000000);
 
         switch (automata) {
             case LANGTONS_ANT:

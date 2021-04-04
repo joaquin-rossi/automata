@@ -39,8 +39,6 @@ void render_grid(SDL_Renderer *renderer, const state_t *state)
 
 void langtons_ant(SDL_Renderer *renderer, state_t *state)
 {
-    render_grid(renderer, state);
-
     // RENDER ANT
     SDL_SetRenderDrawColor(renderer, ANT_COLOR.r, ANT_COLOR.g, ANT_COLOR.b, 255);
     SDL_Rect ant_rect = {
@@ -88,8 +86,6 @@ void langtons_ant(SDL_Renderer *renderer, state_t *state)
 
 void game_of_life(SDL_Renderer *renderer, state_t *state)
 {
-    render_grid(renderer, state);
-
     for (int i = 0; i < MOVES_PER_FRAME; i++)
     if (state->mode == RUNNING_MODE) {
         int new_board[N][N];

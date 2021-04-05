@@ -13,12 +13,14 @@ enum AUTOMATA {
     LANGTONS_ANT,
     GAME_OF_LIFE,
     BRIANS_BRAIN,
+    WIREWORLD,
 };
 
 enum CELL {
     BLACK,
     WHITE,
     BLUE,
+    RED,
 };
 
 enum ORIENTATION {

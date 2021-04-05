@@ -14,8 +14,9 @@ void print_usage()
 {
     printf("Usage: ./cellular-automata AUTOMATA\n");
     printf("       Conway's Game of Life -> gameoflife\n");
-    printf("       Langton's ant -> langton\n");
-    printf("       Brian's brain -> briansbrain\n");
+    printf("       Langton's ant         -> langton\n");
+    printf("       Brian's brain         -> briansbrain\n");
+    printf("       Wireworld             -> wireworld\n");
 }
 
 int main(int argc, char **argv)
@@ -39,6 +40,10 @@ int main(int argc, char **argv)
         automata = BRIANS_BRAIN;
         strncat(running_title, "BRIAN'S BRAIN", 48);
         strncat(paused_title, "BRIAN'S BRAIN", 48);
+    } else if (strcmp(argv[1], "wireworld") == 0) {
+        automata = WIREWORLD;
+        strncat(running_title, "WIREWORLD", 48);
+        strncat(paused_title, "WIREWORLD", 48);
     } else {
         fprintf(stderr, "No such automata.\n");
         print_usage();
@@ -94,7 +99,7 @@ int main(int argc, char **argv)
             state.board[N / 2 + 2][N / 2 - 1] = WHITE;
             break;
 
-        case BRIANS_BRAIN:
+        default:
             for (int x = 0; x < N; x++)
                 for (int y = 0; y < N; y++)
                     state.board[x][y] = BLACK;
@@ -123,6 +128,10 @@ int main(int argc, char **argv)
                             break;
                         case BRIANS_BRAIN:
                             state.board[x][y] = (state.board[x][y] + 1) % 3;
+                            break;
+                        case WIREWORLD:
+                            state.board[x][y] = (state.board[x][y] + 1) % 4;
+                            break;
                     }
                     break;
 
@@ -154,6 +163,10 @@ int main(int argc, char **argv)
 
             case BRIANS_BRAIN:
                 brians_brain(renderer, &state);
+                break;
+
+            case WIREWORLD:
+                wireworld(renderer, &state);
                 break;
         }
 

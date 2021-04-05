@@ -1,22 +1,19 @@
 CC=gcc
 CFLAGS=-Wall -lSDL2
 
-SRC=src
-OBJ=obj
-BIN=bin
-SRCS=$(wildcard $(SRC)/*.c)
-OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
-BINS=$(BIN)/main
+SRC=$(wildcard src/*.c)
+OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))
+BIN=bin/main
 
-all: $(BINS)
+all: $(BIN)
 
-$(BINS): $(OBJS)
-	mkdir -p $(BIN)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+$(BIN): $(OBJ)
+	mkdir -p bin/
+	$(CC) $(CFLAGS) $(OBJ) -o $@
 
-$(OBJ)/%.o: $(SRC)/%.c
-	mkdir -p $(OBJ)
+obj/%.o: src/%.c
+	mkdir -p obj/
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) -r $(BIN)/* $(OBJ)/*
+	$(RM) -r bin/* obj/*

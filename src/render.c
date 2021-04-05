@@ -55,8 +55,8 @@ void langtons_ant(SDL_Renderer *renderer, state_t *state)
     };
     SDL_RenderFillRect(renderer, &ant_rect);
 
-    for (int i = 0; i < MOVES_PER_FRAME; i++)
-    if (state->mode == RUNNING_MODE) {
+    if (state->mode == RUNNING_MODE)
+    for (int i = 0; i < MOVES_PER_FRAME; i++) {
         int current = state->board[state->ant.x][state->ant.y];
 
         // TURN 90º
@@ -92,8 +92,8 @@ void langtons_ant(SDL_Renderer *renderer, state_t *state)
 
 void game_of_life(SDL_Renderer *renderer, state_t *state)
 {
-    for (int i = 0; i < MOVES_PER_FRAME; i++)
-    if (state->mode == RUNNING_MODE) {
+    if (state->mode == RUNNING_MODE)
+    for (int i = 0; i < MOVES_PER_FRAME; i++) {
         int new_board[N][N];
 
         for (int x = 0; x < N; x++)
@@ -124,8 +124,8 @@ void game_of_life(SDL_Renderer *renderer, state_t *state)
 
 void brians_brain(SDL_Renderer *renderer, state_t *state)
 {
+    if (state->mode == RUNNING_MODE)
     for (int i = 0; i < MOVES_PER_FRAME; i++)
-    if (state->mode == RUNNING_MODE) {
         int new_board[N][N];
 
         for (int x = 0; x < N; x++)

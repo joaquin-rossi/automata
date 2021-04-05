@@ -16,6 +16,12 @@ enum AUTOMATA {
     WIREWORLD,
 };
 
+enum MODE {
+    RUNNING_MODE,
+    PAUSED_MODE,
+    QUIT_MODE
+};
+
 enum CELL {
     BLACK,
     WHITE,
@@ -23,18 +29,23 @@ enum CELL {
     RED,
 };
 
-enum ORIENTATION {
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT
-};
+/* CELL NAME MACROS */
 
-enum MODE {
-    RUNNING_MODE,
-    PAUSED_MODE,
-    QUIT_MODE
-};
+// The Game of Life
+#define DEAD BLACK
+#define ALIVE WHITE
+
+//  Brian's brain
+#define OFF BLACK
+#define ON WHITE
+#define DYING BLUE
+
+// Wireworldd
+#define EMPTY BLACK
+#define CONDUCTOR WHITE
+#define ELECTRON_HEAD BLUE
+#define ELECTRON_TAIL RED
+
 
 typedef struct {
     int x;
@@ -47,5 +58,12 @@ typedef struct {
     int mode;
     position ant;
 } state_t;
+
+enum ORIENTATION {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+};
 
 #endif // LOGIC_H_

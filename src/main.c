@@ -13,8 +13,8 @@
 void print_usage()
 {
     printf("Usage: ./cellular-automata AUTOMATA\n");
-    printf("       Conway's Game of Life -> gameoflife\n");
     printf("       Langton's ant         -> langton\n");
+    printf("       Conway's Game of Life -> gameoflife\n");
     printf("       Brian's brain         -> briansbrain\n");
     printf("       Wireworld             -> wireworld\n");
 }

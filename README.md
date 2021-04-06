@@ -6,7 +6,7 @@ Implementation of different celullar automata with SDL2 in C. Developed and test
 * GNU Make
 * SDL2
 
-## Running
+## Installation
 * `git clone https://github.com/joaquin-rossi/celullar-automata`
 * `cd celullar-automata`
 * `make`

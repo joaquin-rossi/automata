@@ -19,9 +19,8 @@ Implementation of different celullar automata with SDL2 in C. Developed and test
 * [Wireworld](https://en.wikipedia.org/wiki/Wireworld)
 
 ## Extra info
-* Click a cell to change its value.
-* Press the spacebar to toggle between paused and unpaused.
-* Press the left click on a cell to alter it's value.
+* Press spacebar to toggle between paused and unpaused.
+* Press left click on a cell to alter its value.
 * Edit src/logic.h (pre-processor #defines) to change speed, size, etc.
 
 ## Demo

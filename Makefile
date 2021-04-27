@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -lSDL2
+CFLAGS=-Wall
 
 SRC=$(wildcard src/*.c)
 OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))

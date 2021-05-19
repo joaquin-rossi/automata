@@ -1,19 +1,18 @@
 CC=gcc
 CFLAGS=-Wall
+LDFLAGS=-lSDL2
 
 SRC=$(wildcard src/*.c)
-OBJ=$(patsubst src/%.c, obj/%.o, $(SRC))
-BIN=bin/main
+OBJ=$(patsubst src/%.c, src/%.o, $(SRC))
+BIN=automata
 
 all: $(BIN)
 
 $(BIN): $(OBJ)
-	mkdir -p bin/
-	$(CC) $(CFLAGS) $(OBJ) -o $@
+	$(CC) $(LDFLAGS) $(OBJ) -o $@
 
-obj/%.o: src/%.c
-	mkdir -p obj/
+src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) -r bin/* obj/*
+	$(RM) -r $(BIN) $(OBJ)
